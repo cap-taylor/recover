@@ -7,6 +7,8 @@
 > ⚠️ **민감정보 없음**: 이 repo는 public이다. 비밀번호·키·토큰·계정 이메일은 절대 여기 없다.
 > 실제 비밀(SSH 키·.env·DB 비번·Claude 로그인)은 백업 tar 안에 있고, 아래 절차가 그걸 꺼낸다.
 > **Google 계정 로그인 정보(Drive 경로를 쓸 때)만큼은 사용자가 따로 기억하고 있어야 한다.**
+>
+> 🔥 **화재처럼 집 안 사본이 전부 없어졌다면** 집 밖에 둔 **화재 복구 카드**(종이)부터 찾는다 — 백업 열쇠 · Google 계정 · Google 백업 코드가 적혀 있다.
 
 ---
 
@@ -43,7 +45,7 @@ clone 하려면 SSH 키가 필요한데 그 키도 백업 안에 있다 → 그�
 
 ### 길 A (빠름): 외장하드 E: 키트
 외장하드를 꽂고 **드라이브 루트의 `복구시작.bat` 을 더블클릭**. 하드 안의 `backups\restore_db.sh` 를 외장하드에서 바로 읽어
-돌린다(10GB 를 다시 받지 않는다). **개인 파일 묶음(private)은 이 길에서만 복구된다** — Drive 엔 일부러 안 올린다.
+돌린다(10GB 를 다시 받지 않는다). 개인 파일 묶음(private)이 평문으로 있어 열쇠를 묻지 않는다.
 
 ### 길 B: Google Drive (외장하드가 없을 때)
 Ubuntu 터미널에서 (이것만 사람이 친다):
@@ -65,10 +67,13 @@ rclone copy gdrive:backups/db ~/backups --progress
 bash ~/backups/restore_db.sh --auto
 ```
 
+맨 앞에서 **백업 열쇠**를 묻는다 — Drive 의 개인 파일 묶음은 암호본이라 종이 카드의 열쇠로만 열린다. 넣고 나면 자리를 비워도 된다.
+열쇠가 없으면 그냥 엔터 — 개인 묶음만 건너뛰고 나머지는 복구된다. 찾으면 `bash ~/scripts/restore_db.sh --private`.
+
 `restore_db.sh --auto` 가 하는 일(목록 SSOT = 그 스크립트): 설정 tar 풀기(SSH 키·.env·전역 지침·두 Claude 계정 프로필) →
 PostgreSQL 설정 + 백업에 있는 DB 전부 복구 → **프로젝트 전부 git clone**(목록 = 백업 안 `~/.claude/projects.list`) →
 프로젝트별 의존성(pip · npm · `mise run setup`) → Claude Code · uv · rclone · mise · Chrome · Playwright · 글꼴 →
-터미널 프로필 · 바탕화면 바로가기 → 프로젝트별 systemd 타이머 · cron → 점검.
+손으로 깐 도구(apt · uv tool · npm -g) → 터미널 프로필 · 바탕화면 바로가기 → 프로젝트별 systemd 타이머 · cron → 점검.
 
 > 받은 폴더에 `SETUP.md` 가 같이 있다. 자동 복구가 막히면 `~/backups/SETUP.md`(외장하드 길이면 `E:\backups\SETUP.md`)의
 > 수동 단계를 따라가면 된다. 그 문서 아래쪽 「복구 공백」 절이 **백업 시점에 다시 못 세울 것으로 알려진 것**을 적어 둔다.
@@ -94,8 +99,9 @@ CLAUDE_CONFIG_DIR=$HOME/.claude-b claude # → /login (예비 계정 — 있을 
 
 ## 기억해야 할 단 하나
 
-**외장하드 E:** 또는 **Google 계정 로그인**(이메일 + 비번 + 2FA) — 둘 중 하나만 있으면 → 이 README → 전체 복구.
-나머지는 백업이 들고 있다. 외장하드는 매일 새벽 갱신된다(꽂혀 있을 때).
+**외장하드 E:** 또는 **Google 계정 로그인**(이메일 + 비번 + 2FA) — 둘 중 하나만 있으면 → 이 README → 복구.
+나머지는 백업이 들고 있다. 외장하드는 매일 새벽 갱신된다(꽂혀 있을 때). 외장하드도 같은 집에 있다면 화재 땐 Google 쪽만 남는다 —
+폰도 없을 때 로그인할 **Google 백업 코드**와 개인 묶음을 여는 **백업 열쇠**는 화재 복구 카드에 있다.
 
 ---
 
