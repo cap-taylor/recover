@@ -1,7 +1,7 @@
 # 🖥 새 컴퓨터 세우기 — Claude Code 순서표 (메타프롬프트)
 
 > **누가 읽나**: 새 컴퓨터(또는 포맷한 컴퓨터)에 막 깔린 **Claude Code**. 사람은 아래 「0. 사람 몫」만 하고 이렇게 말한다:
-> **「https://github.com/cap-taylor/recover/blob/main/NEW_PC.md 를 읽고 그대로 진행해」**
+> **「https://github.com/cap-taylor/recover/blob/master/NEW_PC.md 를 읽고 그대로 진행해」**
 >
 > **목표 상태 = 옛 기기의 기기 명세서**(매일 백업에 담긴다 — 부품·BIOS 판·드라이버 판·모니터 배치·Windows 판·앱 목록·시작 프로그램·winget 목록).
 > 손으로 목록을 만들지 않는다. 옛 명세서와 새 기기 실측의 **차이**가 할 일이다.
