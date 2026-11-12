@@ -17,6 +17,8 @@
    파워(전원 공급기)는 소프트웨어로 못 읽는 유일한 부품이라 이 사진·견적서가 출처다.
 2. **BIOS** (부팅 때 Del/F2): 가상화 켜기(Intel `VT-x` / AMD `SVM`) · 램 XMP/EXPO(선택) ·
    그래픽카드 슬롯 PCIe 세대(옛 기기에서 Gen4 로 강제 종료가 반복돼 Gen3 로 묶은 전례가 있다 — 옛 명세서·부품이 같으면 같은 값부터).
+   메뉴 이름은 보드마다 다르다 — 옛 데스크탑(ASUS 보드) 실제 자리:
+   `Advanced → System Agent (SA) Configuration → PCI Express Configuration → PCIEX16(G4) Link Speed` (Auto / Gen1~Gen4).
    바꾼 화면은 사진으로 남긴다.
 3. **Windows 11 설치** — 로컬 사용자 이름 **`me`**. 인터넷 연결.
 4. **Claude Code 설치** — PowerShell(관리자 아님):
@@ -92,6 +94,15 @@
   3. 사람 몫을 한 장으로: 지금 설정 화면 사진 · 올리기 도구에서 파일을 고르고 마지막 확인에 「아니오」로 끝내는 연습 한 번 ·
      정전 대비(UPS 가 없으면 날씨·전기 공사 없는 때) · 경우별 처방(화면 안 뜸 · 같은 판에서 멈춤 · 설정 초기화 · 되살리기 USB). 폰에서 볼 수 있게 보낸다.
   4. 올린 뒤 Claude 가 잰다: BIOS 판 · 가상화(WSL 이 뜨나) · 그래픽 슬롯 세대 · 장치 오류 0.
+     램 속도는 BIOS 첫 화면 숫자(옛 데스크탑은 2133 으로 보였다) 말고 Windows `Win32_PhysicalMemory.ConfiguredClockSpeed` 로 잰다(같은 날 3200).
+- 실제로 겪은 화면 (옛 데스크탑 ASUS · 0601 → 4004 · 2026-11-13) — 미리 알려 두면 사람이 놀라지 않는다:
+  - 올리기 도구가 끝 무렵 `System will restart to update ME Firmware, please choose the same BIOS file to do BIOS update again`
+    → 재부팅 뒤 **같은 파일을 한 번 더** 고른다. ME(관리 엔진) 펌웨어를 먼저 올리는 2단계라 정상이다(따로 ME 도구를 받을 일 없음).
+  - BitLocker 안내 화면 — 쓰고 있으면 올리기 전에 일시 중지, 안 쓰면(`manage-bde -status` 보호 꺼짐) 그냥 넘긴다.
+  - 올린 뒤 첫 부팅 `Before making any adjustments in the BIOS, please press F5 to load the factory default settings … press F1 to enter BIOS setup`
+    → F1 로 들어가 F5(기본값) → 0단계 2번(가상화 · PCIe 세대 · XMP)을 다시 맞춘다. 기본값으로 돌아가며 꺼 둔 것이 되살아난다.
+  - 그 되살아나는 것 하나 = `Tool → ASUS Armoury Crate → Download & Install ARMOURY CRATE app` (Windows 에 제조사 프로그램을 자동 설치).
+    옛 데스크탑은 사람이 「안 쓴다」로 정해 끄고 지웠다 — 새 기기에서도 사람에게 묻는다(조명·팬 조절이 필요하면 켠다).
 
 ## 6. Windows 업데이트 2차
 
