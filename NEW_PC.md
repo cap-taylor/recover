@@ -18,7 +18,7 @@
 2. **BIOS** (부팅 때 Del/F2): 가상화 켜기(Intel `VT-x` / AMD `SVM`) · 램 XMP/EXPO(선택) ·
    그래픽카드 슬롯 PCIe 세대(옛 기기에서 Gen4 로 강제 종료가 반복돼 Gen3 로 묶은 전례가 있다 — 옛 명세서·부품이 같으면 같은 값부터).
    메뉴 이름은 보드마다 다르다 — 옛 데스크탑(ASUS 보드) 실제 자리:
-   `Advanced → System Agent (SA) Configuration → PCI Express Configuration → PCIEX16(G4) Link Speed` (Auto / Gen1~Gen4).
+   `Advanced → System Agent (SA) Configuration → PCI Express Configuration → PCIEX16(G4) Link Speed` (사진으로 본 값 = Auto · Gen3 · Gen4).
    바꾼 화면은 사진으로 남긴다.
 3. **Windows 11 설치** — 로컬 사용자 이름 **`me`**. 인터넷 연결.
 4. **Claude Code 설치** — PowerShell(관리자 아님):
